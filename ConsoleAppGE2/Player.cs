@@ -9,12 +9,11 @@ namespace ConsoleAppGE2
     internal class Player
     {
         /// <summary>
-        /// プレイヤーの基本情報
+        /// プレイヤーの基本情報 (プロパティを自動実装)
         /// </summary>
-        string playerName;
-        int playerHp;
+        public string playerName { get; private set; }
+        public int playerHp {  get; private set; }
         int playerAtk;
-
 
         /// <summary>
         /// Player情報作成
@@ -32,10 +31,11 @@ namespace ConsoleAppGE2
             {
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.Write("2.HP   > ");
-                bool isSuccess = int.TryParse(Console.ReadLine(), out this.playerHp);
+                bool isSuccess = int.TryParse(Console.ReadLine(), out int setValue);
 
                 if (isSuccess)
                 {
+                    this.playerHp = setValue;   // playerHpはプロパティの制限でoutに直接指定できないため、outにsetValueを指定してから代入する
                     break;
                 }
                 else
@@ -72,6 +72,19 @@ namespace ConsoleAppGE2
             Console.Write("[ Name : {0} ]", this.playerName);
             Console.Write("\n\t\t\t\t  HP  -> "+ this.playerHp);
             Console.Write("\n\t\t\t\t  ATK -> "+ this.playerAtk);
+        }
+
+        /// <summary>
+        /// Playerの攻撃処理 [opp:Opponent]
+        /// </summary>
+        /// <param name="opp">対戦相手の情報</param>
+        public void AttackPlayer(int playerNum,Player opp)
+        {
+            // HPの減算処理
+            opp.playerHp -= this.playerAtk;
+
+            Console.Write("\n\n{0}の攻撃 -> {1}:HP{2}(-{3})"
+                , this.playerName, opp.playerName, opp.playerHp, this.playerAtk);
         }
     }
 }
