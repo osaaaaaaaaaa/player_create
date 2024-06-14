@@ -18,15 +18,21 @@ namespace ConsoleAppGE2
             // newする
             Player[] players = new Player[playerCntMax];
 
-            for(int i = 0; i < playerCntMax; i++)
+            // プレイヤー情報追加処理
+            for (int i = 0; i < playerCntMax; i++)
             {
-                // プレイヤー情報追加処理
                 players[i] = new Player();
                 players[i].CreatePlayer(i);
             }
 
+            // プレイヤー情報の表示処理
+            for (int i = 0; i < playerCntMax; i++)
+            {
+                players[i].ShowPlayer(i);
+            }
+
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("##### ENTERで終了 #####");
+            Console.WriteLine("\n\n##### ENTERで終了 #####");
             Console.ReadLine();
         }
     }

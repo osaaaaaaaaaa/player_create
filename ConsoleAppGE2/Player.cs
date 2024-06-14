@@ -11,7 +11,7 @@ namespace ConsoleAppGE2
         /// <summary>
         /// プレイヤーの基本情報
         /// </summary>
-        string palyerName;
+        string playerName;
         int playerHp;
         int playerAtk;
 
@@ -25,13 +25,13 @@ namespace ConsoleAppGE2
 
             // 名前を設定
             Console.Write("1.Name > ");
-            this.palyerName = Console.ReadLine();
+            this.playerName = Console.ReadLine();
 
             // HPを設定
             while (true)
             {
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.Write("2.HP > ");
+                Console.Write("2.HP   > ");
                 bool isSuccess = int.TryParse(Console.ReadLine(), out this.playerHp);
 
                 if (isSuccess)
@@ -48,7 +48,7 @@ namespace ConsoleAppGE2
             // ATKを設定
             while (true)
             {
-                Console.Write("3.ATK > ");
+                Console.Write("3.ATK  > ");
                 bool isSuccess = int.TryParse(Console.ReadLine(), out this.playerAtk);
 
                 if (isSuccess)
@@ -63,6 +63,15 @@ namespace ConsoleAppGE2
             }
 
             Console.Clear();
+        }
+
+        // Player情報を表示する
+        public void ShowPlayer(int playerNum)
+        {
+            Console.Write("\n\n  * [{0}番目]プレイヤー情報  >>>  ", playerNum);
+            Console.Write("[ Name : {0} ]", this.playerName);
+            Console.Write("\n\t\t\t\t  HP  -> "+ this.playerHp);
+            Console.Write("\n\t\t\t\t  ATK -> "+ this.playerAtk);
         }
     }
 }
