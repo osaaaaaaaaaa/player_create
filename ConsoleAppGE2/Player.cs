@@ -8,5 +8,11 @@ namespace ConsoleAppGE2
 {
     internal class Player
     {
+        /// <summary>
+        /// プレイヤーの基本情報
+        /// </summary>
+        string palyerName;
+        int playerHp;
+        int playerAtk;
     }
 }
